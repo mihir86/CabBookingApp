@@ -43,7 +43,7 @@ public class Login {
 		lblUsername.setBounds(68, 139, 99, 37);
 		frame.getContentPane().add(lblUsername);
 		
-		JLabel label = new JLabel("Usernam");
+		JLabel label = new JLabel("Username");
 		label.setBounds(68, 95, 99, 37);
 		frame.getContentPane().add(label);
 	}
