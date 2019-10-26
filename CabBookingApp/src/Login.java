@@ -2,10 +2,19 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
 
 public class Login {
 
 	private JFrame frame;
+	private JPasswordField passwordField;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -40,11 +49,41 @@ public class Login {
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Password");
-		lblUsername.setBounds(68, 139, 99, 37);
+		lblUsername.setBounds(68, 107, 99, 37);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel label = new JLabel("Username");
-		label.setBounds(68, 95, 99, 37);
+		label.setBounds(68, 57, 99, 37);
 		frame.getContentPane().add(label);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(154, 114, 214, 22);
+		frame.getContentPane().add(passwordField);
+		
+		textField = new JTextField();
+		textField.setBounds(154, 64, 214, 22);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnLogin.setBounds(168, 157, 97, 25);
+		frame.getContentPane().add(btnLogin);
+		
+		JButton btnNewUser = new JButton("New User?");
+		btnNewUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewUser.setBounds(168, 196, 97, 25);
+		frame.getContentPane().add(btnNewUser);
+		
+		JLabel lblWelcomeToUber = DefaultComponentFactory.getInstance().createTitle("WELCOME TO UBER");
+		lblWelcomeToUber.setFont(new Font("Tahoma", Font.BOLD, 17));
+		lblWelcomeToUber.setBounds(139, 13, 219, 53);
+		frame.getContentPane().add(lblWelcomeToUber);
 	}
 }
