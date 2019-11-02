@@ -73,7 +73,7 @@ public class Login {
 		btnLogin.setBounds(168, 157, 97, 25);
 		frame.getContentPane().add(btnLogin);
 		
-		JButton btnNewUser = new JButton("New User?");
+		JButton btnNewUser = new JButton("NEW USER?");
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
