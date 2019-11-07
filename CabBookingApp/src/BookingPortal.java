@@ -3,7 +3,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class BookingPortal {
-
+	User u1;
 	public JFrame frame;
 
 	/**
@@ -11,7 +11,6 @@ public class BookingPortal {
 	 */
 	
 	public BookingPortal(String id, String passwd){
-		User u1;
 		u1 = User.getUser(id, passwd);
 	}
 	
