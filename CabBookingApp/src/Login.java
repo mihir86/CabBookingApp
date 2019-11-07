@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -13,13 +14,14 @@ import java.awt.Font;
 public class Login {
 
 	private JFrame frame;
-	private JPasswordField passwordField;
-	private JTextField textField;
+	private JPasswordField passwrd;
+	private JTextField uid;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -52,30 +54,61 @@ public class Login {
 		lblUsername.setBounds(68, 107, 99, 37);
 		frame.getContentPane().add(lblUsername);
 		
-		JLabel label = new JLabel("Username");
+		JLabel label = new JLabel("Userid");
 		label.setBounds(68, 57, 99, 37);
 		frame.getContentPane().add(label);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(154, 114, 214, 22);
-		frame.getContentPane().add(passwordField);
+		passwrd = new JPasswordField();
+		passwrd.setBounds(154, 114, 214, 22);
+		frame.getContentPane().add(passwrd);
 		
-		textField = new JTextField();
-		textField.setBounds(154, 64, 214, 22);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
+		uid = new JTextField();
+		uid.setBounds(154, 64, 214, 22);
+		frame.getContentPane().add(uid);
+		uid.setColumns(10);
 		
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String userid = uid.getText();
+				String password = String.valueOf(passwrd.getPassword());
+				if(User.checkCredentials(userid, password)) {
+					//
+					EventQueue.invokeLater(new Runnable() {
+            			public void run() {
+            				try {
+            					BookingPortal window = new BookingPortal();
+            					window.frame.setVisible(true);
+            				} catch (Exception e) {
+            					e.printStackTrace();
+            				}
+            			}
+            		});
+				}
+				else {
+					JFrame fr; 
+            	    fr=new JFrame();
+            	    JOptionPane.showMessageDialog(fr,"Invalid Userid or Password");
+				}
 			}
 		});
 		btnLogin.setBounds(168, 157, 97, 25);
 		frame.getContentPane().add(btnLogin);
 		
-		JButton btnNewUser = new JButton("NEW USER?");
+		JButton btnNewUser = new JButton("New User?");
 		btnNewUser.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+        			public void run() {
+        				try {
+        					Registration window = new Registration();
+        					window.frame.setVisible(true);
+        				} catch (Exception e) {
+        					e.printStackTrace();
+        				}
+        			}
+        		});
+
 			}
 		});
 		btnNewUser.setBounds(168, 196, 97, 25);
