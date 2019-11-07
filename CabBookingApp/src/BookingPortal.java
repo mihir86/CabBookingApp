@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 public class BookingPortal {
 	public JFrame frame;
+	
 	User u1;
 
 	/**

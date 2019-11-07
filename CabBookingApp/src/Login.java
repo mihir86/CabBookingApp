@@ -12,7 +12,6 @@ import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
 
 public class Login {
-
 	private JFrame frame;
 	private JPasswordField passwrd;
 	private JTextField uid;

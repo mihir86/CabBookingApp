@@ -1,6 +1,7 @@
 import java.sql.*;
 public class SqlConnector {
 	public static ResultSet rs;
+	
 	//For User table
 	public static void DBConnectupdate(String query){  
 		try{  

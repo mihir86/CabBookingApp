@@ -83,6 +83,5 @@ public class User {
 		wallet = wallet + money;
 		SqlConnector.UpdateBalance(userid,wallet);
 	}
-	
 }
 

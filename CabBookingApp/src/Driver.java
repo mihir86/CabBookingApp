@@ -6,7 +6,6 @@ public class Driver {
 	long phone;
 	Boolean availablity = true;
 	
-	
 	public Driver(String name,double rating,int tripsCount,String vehicleNo,String presentLocation,long phone){
 		this.name = name;
 		this.rating= rating;
