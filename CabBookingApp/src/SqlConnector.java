@@ -1,7 +1,7 @@
 import java.sql.*;
 public class SqlConnector {
 	public static ResultSet rs;
-	//User table
+	//For User table
 	public static void DBConnectupdate(String query){  
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  

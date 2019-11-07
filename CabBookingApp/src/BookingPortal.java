@@ -3,8 +3,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 public class BookingPortal {
-	User u1;
 	public JFrame frame;
+	User u1;
 
 	/**
 	 * Launch the application.

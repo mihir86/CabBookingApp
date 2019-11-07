@@ -74,7 +74,7 @@ public class User {
 	}
 	
 	public void updateWallet(double distance) {
-		double costOfTrip = distance * 5;
+		double costOfTrip = distance * 4;
 		wallet = wallet - costOfTrip;
 		SqlConnector.UpdateBalance(userid,wallet);
 	}

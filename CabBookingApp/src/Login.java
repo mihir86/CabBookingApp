@@ -86,9 +86,9 @@ public class Login {
             		});
 				}
 				else {
-					JFrame fr; 
-            	    fr=new JFrame();
-            	    JOptionPane.showMessageDialog(fr,"Invalid Userid or Password");
+					JFrame f; 
+            	    f=new JFrame();
+            	    JOptionPane.showMessageDialog(f,"Invalid Userid or Password");
 				}
 			}
 		});
