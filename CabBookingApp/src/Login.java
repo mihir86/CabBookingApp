@@ -72,7 +72,7 @@ public class Login {
 				String userid = uid.getText();
 				String password = String.valueOf(passwrd.getPassword());
 				if(User.checkCredentials(userid, password)) {
-					//
+					new BookingPortal(userid,password);
 					EventQueue.invokeLater(new Runnable() {
             			public void run() {
             				try {

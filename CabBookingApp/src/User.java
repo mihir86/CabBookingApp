@@ -16,7 +16,7 @@ public class User {
 	
 	public void register() {
 		SqlConnector.DBConnectupdate("insert into user values ("+
-		"'"+ this.userid + "','" + this.name + "','" + this.password + "'," + this.phone + ",'" + this.emailid + "'," + this.wallet +");");
+		"'"+ this.userid + "','" + this.name + "','" + this.password + "','" + this.emailid + "'," + this.wallet + ",'No'," + this.phone +");");
 	}
 	
 	public static Boolean uniqueid (String id) {
@@ -76,12 +76,25 @@ public class User {
 	public void updateWallet(double distance) {
 		double costOfTrip = distance * 4;
 		wallet = wallet - costOfTrip;
-		SqlConnector.UpdateBalance(userid,wallet);
+		SqlConnector.updateBalance(userid,wallet);
 	}
 	
 	public void addMoney(double money) {
 		wallet = wallet + money;
-		SqlConnector.UpdateBalance(userid,wallet);
+		SqlConnector.updateBalance(userid,wallet);
 	}
+	
+	public static double distanceCal(int x1,int y1,int x2,int y2) {
+		return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+	}
+	
+	public static double costCal(double distance) {
+		return distance*4;
+	}
+	
+	public static double timeCal(double distance) {
+		return distance*3000;
+	}
+	
 }
 

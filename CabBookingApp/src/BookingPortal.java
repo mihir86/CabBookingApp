@@ -1,11 +1,12 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class BookingPortal {
 	public JFrame frame;
 	
-	User u1;
+	static User u1 = new User();
 
 	/**
 	 * Launch the application.
@@ -14,6 +15,7 @@ public class BookingPortal {
 	public BookingPortal(String id, String passwd){
 		u1 = User.getUser(id, passwd);
 	}
+	
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -42,6 +44,6 @@ public class BookingPortal {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 	}
-
 }
