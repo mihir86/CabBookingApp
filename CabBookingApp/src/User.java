@@ -1,11 +1,12 @@
 public class User {
-	String name,userid,emailid,password;
-	long phone;
-	double wallet;
+	protected String userid,password;
+	private String emailid,name;
+	private long phone;
+	protected int wallet;
 	
 	public User() {}
 	
-	public User(String name,String userid,String emailid,String password,long phone,double wallet) {
+	public User(String name,String userid,String emailid,String password,long phone,int wallet) {
 		this.name = name;
 		this.userid = userid;
 		this.emailid = emailid;
@@ -61,39 +62,39 @@ public class User {
 		String nameofuser = SqlConnector.getName(id);
 		String emailid = SqlConnector.getEmailid(id);
 		long phoneno = SqlConnector.getPhoneno(id);
-		double balance = SqlConnector.getBalance(id);
+		int balance = SqlConnector.getBalance(id);
 		User u = new User(nameofuser,id,emailid,passwd,phoneno,balance);
 		return u;
 	}
 	
 	public Boolean checkWallet(double distance) {
-		double costOfTrip = distance * 5;
+		double costOfTrip = distance * 40;
 		if(wallet>=300 && (wallet-costOfTrip)>=0)
 			return true;
 		return false;
 	}
 	
 	public void updateWallet(double distance) {
-		double costOfTrip = distance * 4;
-		wallet = wallet - costOfTrip;
+		double costOfTrip = distance * 20;
+		wallet = wallet - (int)costOfTrip;
 		SqlConnector.updateBalance(userid,wallet);
 	}
 	
-	public void addMoney(double money) {
+	public void addMoney(int money) {
 		wallet = wallet + money;
 		SqlConnector.updateBalance(userid,wallet);
 	}
 	
 	public static double distanceCal(int x1,int y1,int x2,int y2) {
-		return Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1));
+		return Math.round(Math.sqrt((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1)));
 	}
 	
 	public static double costCal(double distance) {
-		return distance*4;
+		return Math.round(distance*20);
 	}
 	
 	public static double timeCal(double distance) {
-		return distance*3000;
+		return Math.round(distance*3000);
 	}
 	
 }

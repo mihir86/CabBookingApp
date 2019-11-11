@@ -106,4 +106,12 @@ public class DriverAllotment {
 			SqlConnector.DBConnectupdate("update driver set presentloc='"+ to +"' where vehicleno = '"+ id +"';");
 		}
 		
+		public static void decreaseCityDriverCount(String from) {
+			SqlConnector.DBConnectupdate("update city set drivercount = drivercount-1 where name = '"+ from +"';");
+		}
+		
+		public static void increaseCityDriverCount(String from) {
+			SqlConnector.DBConnectupdate("update city set drivercount = drivercount+1 where name = '"+ from +"';");
+		}
+		
 }

@@ -120,9 +120,9 @@ public class SqlConnector {
 		return phoneno;
 	}
 	
-	public static double getBalance(String id)
+	public static int getBalance(String id)
 	{
-		double wallet = 0;
+		int wallet = 0;
 		try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
@@ -131,7 +131,7 @@ public class SqlConnector {
 				String que = "select wallet from User where userid = '"+ id + "';";
 				rs = stmt.executeQuery(que);
 				while(rs.next())
-				wallet = rs.getDouble("wallet");
+				wallet = rs.getInt("wallet");
 				con.close();
 			}
 			catch(Exception e) {
@@ -172,6 +172,21 @@ public class SqlConnector {
 	
 	public static void updateAvailabilityN(String id) {
 		String query = "update driver set availablity = 'No' where vehicleno = '"+ id + "';";
+		try{  
+			Class.forName("com.mysql.jdbc.Driver");  
+			Connection con=DriverManager.getConnection(  
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			Statement stmt=con.createStatement();  
+			stmt.executeUpdate(query);
+			con.close();
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		} 
+	}
+	
+	public static void updateAvailabilityY(String id) {
+		String query = "update driver set availablity = 'Yes' where vehicleno = '"+ id + "';";
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
@@ -263,7 +278,7 @@ public class SqlConnector {
 					Connection con=DriverManager.getConnection(  
 					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
 					Statement stmt=con.createStatement(); 
-					String que = "select email from driver where vehicleno = '"+ id + "';";
+					String que = "select presentloc from driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
 					while(rs.next())
 					location = rs.getString("presentloc");
@@ -394,5 +409,26 @@ public class SqlConnector {
 				}
 			return y;
 		}
+		
+		public static String[] DBConnectgetcity()
+		{
+			String arr[]=new String[10];
+			int i=0;
+			try{  
+					Class.forName("com.mysql.jdbc.Driver");  
+					Connection con=DriverManager.getConnection(  
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					Statement stmt=con.createStatement(); 
+					String que = "select name from city;";
+					rs = stmt.executeQuery(que); 
+					while(rs.next())  
+						arr[i++]=rs.getString("name");
+					con.close();
+				}
+				catch(Exception e) {
+						System.out.println(e);
+				}  
+			return arr;
+		} 
 	
 }

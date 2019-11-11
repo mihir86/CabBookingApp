@@ -5,6 +5,8 @@ public class Driver {
 	double rating;
 	long phone;
 	
+	public Driver() {}
+	
 	public Driver(String name,double rating,int tripsCount,String vehicleNo,String presentLocation,long phone,String availability){
 		this.name = name;
 		this.rating= rating;
@@ -28,8 +30,7 @@ public class Driver {
 	
 	public void updateDriver (String newLocation,int recentUserRating,Driver d) {
 		d.tripsCount = d.tripsCount+1;
-		d.rating = (recentUserRating + d.rating)/(d.tripsCount);
-		SqlConnector.DBConnectupdate("update city set drivercount = drivercount-1 where name = '"+ d.presentLocation +"';");
+		d.rating = (recentUserRating + d.rating*(d.tripsCount-1))/(d.tripsCount);
 		SqlConnector.DBConnectupdate("update city set drivercount = drivercount+1 where name = '"+ newLocation +"';");
 		SqlConnector.DBConnectupdateDriver("update driver set tripcount="+d.tripsCount+",rating=" + d.rating+",availablity='Yes',presentloc='"+newLocation+"' where vehicleno='"+d.vehicleNo+"';" );
 		d.presentLocation = newLocation;
