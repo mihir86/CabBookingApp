@@ -6,16 +6,16 @@ import java.sql.Statement;
 public class DriverAllotment {
 	public static ResultSet rs;
 		//Allocating Driver
-		public static String driverAllocate(String from) {
+		public static String driverAllocate(String cityname) {
 			String vehiclenum = null;
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
 					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
 					Statement stmt=con.createStatement(); 
-					String que = "select max(rating),vehicleno from driver where presentloc='"+ from+"' and availablity='Yes';";
+					String que = "select vehicleno from driver where rating = ( select max(rating) from driver where presentloc='"+ cityname +"' and availablity='Yes') and presentloc='"+ cityname +"' and availablity='Yes';";
 					rs = stmt.executeQuery(que); 
-					while(rs.next())  
+					rs.next();  
 						vehiclenum = rs.getString("vehicleno");
 					con.close();
 				}

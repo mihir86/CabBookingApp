@@ -4,26 +4,31 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JProgressBar;
 
 public class Trip {
 
 	public JFrame frame;
 	
 	static Driver d1 = new Driver();
-	static String to;
+	static String newcity;
 	static int time;
 	static String uid;
 	static String passwd;
 	static double distance;
+	static String vehicleid;
 	
 	public Trip(String vehicleno, String newLocation, int timer, String userid, String password,double dist){
+		vehicleid = vehicleno;
 		d1 = Driver.getDriver(vehicleno);
-		to = newLocation;
+		newcity = newLocation;
 		time = timer;
 		uid = userid;
 		passwd = password;
@@ -113,18 +118,6 @@ public class Trip {
 		frame.getContentPane().add(lblSelectRating);
 		lblSelectRating.setVisible(false);
 		
-		JLabel lblThanksForRiding = new JLabel("THANKS FOR RIDING!");
-		lblThanksForRiding.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblThanksForRiding.setBounds(118, 200, 186, 16);
-		frame.getContentPane().add(lblThanksForRiding);
-		lblThanksForRiding.setVisible(false);
-		
-		JLabel lblHaveANice = new JLabel("HAVE A NICE DAY!");
-		lblHaveANice.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblHaveANice.setBounds(128, 224, 160, 16);
-		frame.getContentPane().add(lblHaveANice);
-		lblHaveANice.setVisible(false);
-		
 		JLabel lblTripDetails = new JLabel("TRIP DETAILS");
 		lblTripDetails.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblTripDetails.setBounds(140, 13, 132, 16);
@@ -139,6 +132,10 @@ public class Trip {
 		btnOk.setBounds(318, 164, 80, 25);
 		frame.getContentPane().add(btnOk);
 		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(33, 226, 354, 14);
+		frame.getContentPane().add(progressBar);
+				
 		Timer t = new Timer(time,new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -149,8 +146,10 @@ public class Trip {
 				btnOk.setVisible(true);
 				btnOk.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						d1 = Driver.getDriver(vehicleid);
 	            	    int recentRating = Integer.parseInt((String)comboBox.getSelectedItem());
-	            	    d1.updateDriver(to, recentRating, d1);
+	            	    SqlConnector.DBConnectupdate("update city set drivercount = drivercount+1 where name = '"+ newcity +"';");
+	            		SqlConnector.DBConnectupdateDriver("update driver set tripcount="+Integer.toString(d1.tripsCount+1)+",rating=" + Double.toString((recentRating + d1.rating*(d1.tripsCount))/(d1.tripsCount+1))+",availablity='Yes',presentloc='"+newcity+"' where vehicleno='"+d1.vehicleNo+"';" );
 	            	    SqlConnector.updateAvailabilityY(d1.vehicleNo);
 	            	    SqlConnector.updateRidingN(uid);
 	            	    User u = User.getUser(uid, passwd);
@@ -165,6 +164,5 @@ public class Trip {
 			
 		});
 		t.start();
-		}
-
+	}
 }

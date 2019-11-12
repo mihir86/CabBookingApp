@@ -27,12 +27,4 @@ public class Driver {
 		Driver d = new Driver(nameofdriver,rating,tripcount,vehicleno,presentLocation,phoneno,availability);
 		return d;
 	}
-	
-	public void updateDriver (String newLocation,int recentUserRating,Driver d) {
-		d.tripsCount = d.tripsCount+1;
-		d.rating = (recentUserRating + d.rating*(d.tripsCount-1))/(d.tripsCount);
-		SqlConnector.DBConnectupdate("update city set drivercount = drivercount+1 where name = '"+ newLocation +"';");
-		SqlConnector.DBConnectupdateDriver("update driver set tripcount="+d.tripsCount+",rating=" + d.rating+",availablity='Yes',presentloc='"+newLocation+"' where vehicleno='"+d.vehicleNo+"';" );
-		d.presentLocation = newLocation;
-	}
 }

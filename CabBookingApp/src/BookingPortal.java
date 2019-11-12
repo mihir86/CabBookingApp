@@ -145,8 +145,8 @@ public class BookingPortal {
 		
 		btnSearchForCabs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String from = (String) comboBox.getSelectedItem();
-				String to = (String) comboBox_1.getSelectedItem();
+				from = (String) comboBox.getSelectedItem();
+				to = (String) comboBox_1.getSelectedItem();
 				int x1 = SqlConnector.getX(from);
 				int y1 = SqlConnector.getY(from);
 				int x2 = SqlConnector.getX(to);
@@ -194,9 +194,8 @@ public class BookingPortal {
 		
 		btnCancel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String from1 = (String) comboBox.getSelectedItem();
 				SqlConnector.updateAvailabilityY(d.vehicleNo);
-				DriverAllotment.increaseCityDriverCount(from1);
+				DriverAllotment.increaseCityDriverCount(from);
 				
 				lblNewLabel.setVisible(false);
 				lblDistance.setVisible(false);
@@ -239,6 +238,7 @@ public class BookingPortal {
 					btnMyWallet.setVisible(false);
 					
 					new Trip(d.vehicleNo,to,time,u1.userid,u1.password,distance);
+					
 					EventQueue.invokeLater(new Runnable() {
 	        			public void run() {
 	        				try {
