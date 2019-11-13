@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,6 +9,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
 import java.awt.Font;
@@ -15,6 +19,8 @@ public class Login {
 	private JFrame frame;
 	private JPasswordField passwrd;
 	private JTextField uid;
+	private JLabel hyperlink;
+	private Registration registrationPage;
 
 	/**
 	 * Launch the application.
@@ -45,24 +51,26 @@ public class Login {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 774, 533);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblUsername = new JLabel("Password");
-		lblUsername.setBounds(68, 107, 99, 37);
+		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUsername.setBounds(208, 256, 99, 37);
 		frame.getContentPane().add(lblUsername);
 		
-		JLabel label = new JLabel("Userid");
-		label.setBounds(68, 57, 99, 37);
-		frame.getContentPane().add(label);
+		JLabel lblUserid = new JLabel("UserID");
+		lblUserid.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUserid.setBounds(229, 206, 60, 37);
+		frame.getContentPane().add(lblUserid);
 		
 		passwrd = new JPasswordField();
-		passwrd.setBounds(154, 114, 214, 22);
+		passwrd.setBounds(318, 264, 214, 22);
 		frame.getContentPane().add(passwrd);
 		
 		uid = new JTextField();
-		uid.setBounds(154, 64, 214, 22);
+		uid.setBounds(318, 214, 214, 22);
 		frame.getContentPane().add(uid);
 		uid.setColumns(10);
 		
@@ -85,37 +93,50 @@ public class Login {
             		});
 				}
 				else {
-					JFrame f; 
-            	    f=new JFrame();
-            	    JOptionPane.showMessageDialog(f,"Invalid Userid or Password");
+            	    JOptionPane.showMessageDialog(frame,"Invalid Userid or Password");
 				}
 			}
 		});
-		btnLogin.setBounds(168, 157, 97, 25);
+		btnLogin.setBounds(309, 348, 97, 25);
 		frame.getContentPane().add(btnLogin);
 		
-		JButton btnNewUser = new JButton("New User?");
-		btnNewUser.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-        			public void run() {
-        				try {
-        					Registration window = new Registration();
-        					window.frame.setVisible(true);
-        				} catch (Exception e) {
-        					e.printStackTrace();
-        				}
-        			}
-        		});
-
-			}
-		});
-		btnNewUser.setBounds(168, 196, 97, 25);
-		frame.getContentPane().add(btnNewUser);
 		
-		JLabel lblWelcomeToUber = DefaultComponentFactory.getInstance().createTitle("WELCOME TO UBER");
-		lblWelcomeToUber.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblWelcomeToUber.setBounds(139, 13, 219, 53);
+		hyperlink = new JLabel("New User? Register here");
+		hyperlink.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		hyperlink.setBounds(273, 396, 189, 32);
+		frame.getContentPane().add(hyperlink);
+		
+		hyperlink.setForeground(Color.BLUE.darker());
+	    hyperlink.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		
+	  
+	    registrationPage = new Registration();
+	    hyperlink.addMouseListener(new MouseAdapter() {
+	 
+	            @Override
+	            public void mouseClicked(MouseEvent e) {
+	                registrationPage.setVisible(true);
+	            }
+	 
+	            @Override
+	            public void mouseExited(MouseEvent e) {
+	                hyperlink.setText("New User? Register here");
+	            }
+	 
+	            @Override
+	            public void mouseEntered(MouseEvent e) {
+	                hyperlink.setText("<html><a href=''>" + "New User? Register here" + "</a></html>");
+	            }
+	    });
+		
+		JLabel lblWelcomeToUber = DefaultComponentFactory.getInstance().createTitle("Welcome to MARS Cabs");
+		lblWelcomeToUber.setFont(new Font("Tahoma", Font.BOLD, 30));
+		lblWelcomeToUber.setBounds(190, 46, 389, 53);
 		frame.getContentPane().add(lblWelcomeToUber);
+		
+		JLabel label_1 = new JLabel("Sign In");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		label_1.setBounds(322, 134, 68, 25);
+		frame.getContentPane().add(label_1);
 	}
 }
