@@ -10,6 +10,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class BookingPortal {
 	public JFrame frame;
@@ -54,18 +55,18 @@ public class BookingPortal {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 887, 525);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		String s[]= SqlConnector.DBConnectgetcity();
 		
 		JComboBox comboBox = new JComboBox(s);
-		comboBox.setBounds(114, 13, 242, 22);
+		comboBox.setBounds(184, 111, 242, 22);
 		frame.getContentPane().add(comboBox);
 		
 		JComboBox comboBox_1 = new JComboBox(s);
-		comboBox_1.setBounds(114, 48, 242, 22);
+		comboBox_1.setBounds(184, 171, 242, 22);
 		frame.getContentPane().add(comboBox_1);
 		
 		JButton btnSearchForCabs = new JButton("Search for Cabs");
@@ -73,55 +74,63 @@ public class BookingPortal {
 		JButton btnConfirmBooking = new JButton("Confirm Booking");
 		
 		btnConfirmBooking.setVisible(false);
-		btnConfirmBooking.setBounds(70, 199, 135, 25);
+		btnConfirmBooking.setBounds(282, 440, 135, 25);
 		frame.getContentPane().add(btnConfirmBooking);
 		
 		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblNewLabel.setVisible(false);
-		lblNewLabel.setBounds(184, 121, 148, 16);
+		lblNewLabel.setBounds(233, 285, 148, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblNewLabel_1.setVisible(false);
-		lblNewLabel_1.setBounds(184, 141, 148, 16);
+		lblNewLabel_1.setBounds(233, 314, 148, 16);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblNewLabel_2.setVisible(false);
-		lblNewLabel_2.setBounds(184, 170, 148, 16);
+		lblNewLabel_2.setBounds(233, 343, 148, 16);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblPickup = new JLabel("Pickup :");
-		lblPickup.setBounds(24, 16, 56, 16);
+		lblPickup.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPickup.setBounds(94, 112, 78, 21);
 		frame.getContentPane().add(lblPickup);
 		
 		JLabel lblDestination = new JLabel("Destination :");
-		lblDestination.setBounds(24, 51, 89, 16);
+		lblDestination.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblDestination.setBounds(57, 172, 124, 16);
 		frame.getContentPane().add(lblDestination);
 		
 		JLabel lblDistance = new JLabel("Distance:");
+		lblDistance.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblDistance.setVisible(false);
-		lblDistance.setBounds(70, 121, 56, 16);
+		lblDistance.setBounds(164, 285, 78, 16);
 		frame.getContentPane().add(lblDistance);
 		
 		JLabel lblEstimatedTime = new JLabel("Estimated Time:");
+		lblEstimatedTime.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblEstimatedTime.setVisible(false);
-		lblEstimatedTime.setBounds(70, 141, 102, 16);
+		lblEstimatedTime.setBounds(120, 314, 122, 16);
 		frame.getContentPane().add(lblEstimatedTime);
 		
 		JLabel lblEstimatedFare = new JLabel("Estimated Fare:");
+		lblEstimatedFare.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblEstimatedFare.setVisible(false);
-		lblEstimatedFare.setBounds(70, 170, 102, 16);
+		lblEstimatedFare.setBounds(120, 343, 122, 16);
 		frame.getContentPane().add(lblEstimatedFare);
 		
 		
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setVisible(false);
-		btnCancel.setBounds(249, 199, 97, 25);
+		btnCancel.setBounds(459, 440, 97, 25);
 		frame.getContentPane().add(btnCancel);
 		
-		btnSearchForCabs.setBounds(70, 83, 148, 25);
+		btnSearchForCabs.setBounds(68, 226, 148, 25);
 		frame.getContentPane().add(btnSearchForCabs);
 		
 		JButton btnMyWallet = new JButton("My Wallet");
@@ -140,8 +149,13 @@ public class BookingPortal {
         		});
 			}
 		});
-		btnMyWallet.setBounds(235, 83, 153, 25);
+		btnMyWallet.setBounds(249, 226, 153, 25);
 		frame.getContentPane().add(btnMyWallet);
+		
+		JLabel lblBookARide = new JLabel("Book a Ride");
+		lblBookARide.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblBookARide.setBounds(27, 30, 142, 34);
+		frame.getContentPane().add(lblBookARide);
 		
 		btnSearchForCabs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -154,19 +168,13 @@ public class BookingPortal {
 				distance = User.distanceCal(x1, y1, x2, y2);
 				u1 = User.getUser(u1.userid, u1.password);
 				if(to.equals(from)) {
-					JFrame f; 
-            	    f=new JFrame();
-            	    JOptionPane.showMessageDialog(f,"Please Enter 2 different locations!");
+            	    JOptionPane.showMessageDialog(frame,"Please Enter 2 different locations!");
 				}
 				else if(!u1.checkWallet(distance)) {
-					JFrame f; 
-            	    f=new JFrame();
-            	    JOptionPane.showMessageDialog(f,"Insufficient Wallet Balance!");
+            	    JOptionPane.showMessageDialog(frame,"Insufficient Wallet Balance!");
 				}
 				else if(!DriverAllotment.checkDriverCount(from)) {
-					JFrame f; 
-            	    f=new JFrame();
-            	    JOptionPane.showMessageDialog(f,"No cabs available at the moment!");
+            	    JOptionPane.showMessageDialog(frame,"No cabs available at the moment!");
             	    String location = DriverAllotment.maxDriverCity();
             	    String BestDriver = DriverAllotment.driverAllocate(location);
             	    DriverAllotment.reallocateDrivers(location, from, BestDriver);
@@ -214,14 +222,10 @@ public class BookingPortal {
 				time = (int) User.timeCal(distance);
 				
 				if(SqlConnector.IsRiding(u1.userid)) {
-					JFrame f; 
-            	    f=new JFrame();
-            	    JOptionPane.showMessageDialog(f,"You are already on a ride!");
+            	    JOptionPane.showMessageDialog(frame,"You are already on a ride!");
 				}
 				else if(!u1.checkWallet(distance)) {
-					JFrame f; 
-            	    f=new JFrame();
-            	    JOptionPane.showMessageDialog(f,"Insufficient Wallet Balance!");
+            	    JOptionPane.showMessageDialog(frame,"Insufficient Wallet Balance!\nPlease add money to the wallet");
 				}
 				
 				else {

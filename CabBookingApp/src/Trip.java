@@ -8,6 +8,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.JComboBox;
 import java.awt.Font;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -69,7 +72,7 @@ public class Trip {
 		
 		JLabel lblNewLabel = new JLabel("Name :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblNewLabel.setBounds(80, 95, 60, 16);
+		lblNewLabel.setBounds(79, 95, 60, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Vehicle ID :");
@@ -88,12 +91,12 @@ public class Trip {
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JLabel dname = new JLabel("New label");
-		dname.setBounds(185, 37, 202, 16);
+		dname.setBounds(151, 95, 151, 16);
 		frame.getContentPane().add(dname);
 		dname.setText(d1.name);
 		
 		JLabel dvehicle = new JLabel("New label");
-		dvehicle.setBounds(185, 66, 202, 16);
+		dvehicle.setBounds(152, 140, 151, 16);
 		frame.getContentPane().add(dvehicle);
 		dvehicle.setText(d1.vehicleNo);
 		
@@ -123,9 +126,9 @@ public class Trip {
 		frame.getContentPane().add(lblSelectRating);
 		lblSelectRating.setVisible(false);
 		
-		JLabel lblTripDetails = new JLabel("Trip Details");
+		JLabel lblTripDetails = new JLabel("Driver Details");
 		lblTripDetails.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblTripDetails.setBounds(64, 26, 132, 27);
+		lblTripDetails.setBounds(32, 39, 159, 27);
 		frame.getContentPane().add(lblTripDetails);
 		
 		JProgressBar progressBar = new JProgressBar();
@@ -144,6 +147,38 @@ public class Trip {
 		btnOk.setVisible(false);
 		btnOk.setBounds(417, 268, 80, 25);
 		frame.getContentPane().add(btnOk);
+		
+		JLabel lblTripDetails_1 = new JLabel("Trip Details");
+		lblTripDetails_1.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblTripDetails_1.setBounds(338, 39, 159, 27);
+		frame.getContentPane().add(lblTripDetails_1);
+		
+		JLabel lblTo = new JLabel("To :");
+		lblTo.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTo.setBounds(354, 95, 37, 16);
+		frame.getContentPane().add(lblTo);
+		
+		JLabel lblDestination = new JLabel("From :");
+		lblDestination.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDestination.setBounds(338, 140, 60, 16);
+		frame.getContentPane().add(lblDestination);
+		
+		JLabel lblMoneyPaid = new JLabel("Money Paid :");
+		lblMoneyPaid.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblMoneyPaid.setBounds(296, 175, 97, 26);
+		frame.getContentPane().add(lblMoneyPaid);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(484, 29, 37, 39);
+		frame.getContentPane().add(label);
+		Image img1 = new ImageIcon(this.getClass().getResource("/trip.png")).getImage();
+		label.setIcon(new ImageIcon(img1));
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setBounds(203, 29, 60, 35);
+		frame.getContentPane().add(label_1);
+		Image img2 = new ImageIcon(this.getClass().getResource("/driver.png")).getImage();
+		label_1.setIcon(new ImageIcon(img2));
 				
 		Timer t = new Timer(time,new ActionListener() {
 			@Override

@@ -4,8 +4,12 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.Font;
+import java.awt.Image;
 
 public class UserWallet {
 
@@ -44,25 +48,27 @@ public class UserWallet {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 515, 336);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setText(Integer.toString(u1.wallet));
-		lblNewLabel.setBounds(214, 73, 128, 16);
+		lblNewLabel.setBounds(248, 129, 128, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Wallet Balance :");
-		lblNewLabel_1.setBounds(89, 73, 107, 16);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_1.setBounds(108, 123, 128, 25);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Select Amount :");
-		lblNewLabel_2.setBounds(89, 105, 107, 16);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblNewLabel_2.setBounds(108, 161, 128, 30);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton btnAddMoney = new JButton("Add Money");
-		btnAddMoney.setBounds(175, 151, 97, 25);
+		btnAddMoney.setBounds(186, 226, 97, 25);
 		frame.getContentPane().add(btnAddMoney);
 		
 		String moneyOptions[] = new String[50];
@@ -71,14 +77,31 @@ public class UserWallet {
 		}
 		
 		JComboBox money = new JComboBox(moneyOptions);
-		money.setBounds(210, 102, 128, 22);
+		money.setBounds(248, 166, 128, 22);
 		frame.getContentPane().add(money);
+		
+		JLabel lblMyWallet = new JLabel("My Wallet");
+		lblMyWallet.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		lblMyWallet.setBounds(45, 25, 112, 40);
+		frame.getContentPane().add(lblMyWallet);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(169, 13, 71, 65);
+		frame.getContentPane().add(label);
 		btnAddMoney.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {	
 				int addmoney = Integer.parseInt((String)money.getSelectedItem());
-				u1.addMoney(addmoney);
-				lblNewLabel.setText(Integer.toString(u1.wallet));
+				if (JOptionPane.showConfirmDialog(null, "Are you sure?", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				    // yes option
+					u1.addMoney(addmoney);
+					lblNewLabel.setText(Integer.toString(u1.wallet));
+				} 
+				else {
+				    // no option
+				}
 			}
 		});
+		Image img = new ImageIcon(this.getClass().getResource("/wallet.png")).getImage();
+		label.setIcon(new ImageIcon(img));
 	}
 }
