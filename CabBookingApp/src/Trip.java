@@ -63,24 +63,28 @@ public class Trip {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.setBounds(100, 100, 620, 399);
+		frame.setDefaultCloseOperation(frame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Name :");
-		lblNewLabel.setBounds(82, 37, 91, 16);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel.setBounds(80, 95, 60, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Vehicle ID :");
-		lblNewLabel_1.setBounds(82, 66, 91, 16);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(49, 140, 91, 16);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Phone No. :");
-		lblNewLabel_2.setBounds(82, 95, 91, 16);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_2.setBounds(49, 175, 91, 26);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("Rating :");
-		lblNewLabel_3.setBounds(82, 124, 91, 16);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNewLabel_3.setBounds(80, 214, 60, 26);
 		frame.getContentPane().add(lblNewLabel_3);
 		
 		JLabel dname = new JLabel("New label");
@@ -94,12 +98,12 @@ public class Trip {
 		dvehicle.setText(d1.vehicleNo);
 		
 		JLabel dphone = new JLabel("New label");
-		dphone.setBounds(185, 95, 132, 16);
+		dphone.setBounds(152, 181, 132, 16);
 		frame.getContentPane().add(dphone);
 		dphone.setText(Long.toString(d1.phone));
 		
 		JLabel drating = new JLabel("New label");
-		drating.setBounds(185, 124, 132, 16);
+		drating.setBounds(152, 220, 132, 16);
 		frame.getContentPane().add(drating);
 		drating.setText(Double.toString(d1.rating));
 		
@@ -109,32 +113,37 @@ public class Trip {
 		}
 		
 		JComboBox comboBox = new JComboBox(ratingOptions);
-		comboBox.setBounds(185, 165, 106, 22);
+		comboBox.setBounds(266, 269, 106, 22);
 		frame.getContentPane().add(comboBox);
 		comboBox.setVisible(false);
 		
-		JLabel lblSelectRating = new JLabel("Select Driver's Rating :");
-		lblSelectRating.setBounds(33, 168, 140, 16);
+		JLabel lblSelectRating = new JLabel("Please Select Driver Rating :");
+		lblSelectRating.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblSelectRating.setBounds(49, 266, 199, 26);
 		frame.getContentPane().add(lblSelectRating);
 		lblSelectRating.setVisible(false);
 		
-		JLabel lblTripDetails = new JLabel("TRIP DETAILS");
-		lblTripDetails.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblTripDetails.setBounds(140, 13, 132, 16);
+		JLabel lblTripDetails = new JLabel("Trip Details");
+		lblTripDetails.setFont(new Font("Tahoma", Font.BOLD, 22));
+		lblTripDetails.setBounds(64, 26, 132, 27);
 		frame.getContentPane().add(lblTripDetails);
 		
-		JButton btnOk = new JButton("OK");
-		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnOk.setVisible(false);
-		btnOk.setBounds(318, 164, 80, 25);
-		frame.getContentPane().add(btnOk);
-		
 		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(33, 226, 354, 14);
+		progressBar.setBounds(100, 313, 397, 26);
 		frame.getContentPane().add(progressBar);
+		
+		JButton btnOk = new JButton("OK");
+		/*btnOk.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(progressBar.getValue() < 100)
+					progressBar.setValue(progressBar.getValue()+5);
+				else
+					t.stop();
+			}
+		});*/
+		btnOk.setVisible(false);
+		btnOk.setBounds(417, 268, 80, 25);
+		frame.getContentPane().add(btnOk);
 				
 		Timer t = new Timer(time,new ActionListener() {
 			@Override
@@ -154,9 +163,7 @@ public class Trip {
 	            	    SqlConnector.updateRidingN(uid);
 	            	    User u = User.getUser(uid, passwd);
 	            	    u.updateWallet(distance);
-	            	    JFrame f; 
-	            	    f=new JFrame();
-	            	    JOptionPane.showMessageDialog(f,"Thanks for Riding!\nHave a Nice Day!");
+	            	    JOptionPane.showMessageDialog(frame,"Thanks for Riding!\nHave a Nice Day!");
 	            	    frame.dispose();
 					}
 				});
