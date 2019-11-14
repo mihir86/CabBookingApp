@@ -229,6 +229,7 @@ public class BookingPortal {
 				}
 				
 				else {
+					JOptionPane.showMessageDialog(frame, "Booking Confirmed\nEnjoy ur Ride!");
 					SqlConnector.updateRidingY(u1.userid);
 					btnConfirmBooking.setVisible(false);
 					btnCancel.setVisible(false);
