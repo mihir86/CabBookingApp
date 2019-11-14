@@ -66,9 +66,12 @@ public class Trip {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 620, 399);
+		frame.setBounds(100, 100, 619, 429);
 		frame.setDefaultCloseOperation(frame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		ImageIcon logo = new ImageIcon("C:\\Users\\Mihir Bansal\\Desktop\\project images\\logo6.jpg");
+		frame.setIconImage(logo.getImage());
+		frame.setTitle("MARS Cabs");
 		
 		JLabel lblNewLabel = new JLabel("Name :");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -147,32 +150,7 @@ public class Trip {
 		btnOk.setVisible(false);
 		btnOk.setBounds(417, 268, 80, 25);
 		frame.getContentPane().add(btnOk);
-		
-		JLabel lblTripDetails_1 = new JLabel("Trip Details");
-		lblTripDetails_1.setFont(new Font("Tahoma", Font.BOLD, 22));
-		lblTripDetails_1.setBounds(338, 39, 159, 27);
-		frame.getContentPane().add(lblTripDetails_1);
-		
-		JLabel lblTo = new JLabel("To :");
-		lblTo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblTo.setBounds(354, 95, 37, 16);
-		frame.getContentPane().add(lblTo);
-		
-		JLabel lblDestination = new JLabel("From :");
-		lblDestination.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDestination.setBounds(338, 140, 60, 16);
-		frame.getContentPane().add(lblDestination);
-		
-		JLabel lblMoneyPaid = new JLabel("Money Paid :");
-		lblMoneyPaid.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblMoneyPaid.setBounds(296, 175, 97, 26);
-		frame.getContentPane().add(lblMoneyPaid);
-		
-		JLabel label = new JLabel("");
-		label.setBounds(484, 29, 37, 39);
-		frame.getContentPane().add(label);
 		Image img1 = new ImageIcon(this.getClass().getResource("/trip.png")).getImage();
-		label.setIcon(new ImageIcon(img1));
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setBounds(203, 29, 60, 35);
@@ -214,7 +192,8 @@ public class Trip {
 	            	    SqlConnector.updateRidingN(uid);
 	            	    User u = User.getUser(uid, passwd);
 	            	    u.updateWallet(distance);
-	            	    JOptionPane.showMessageDialog(frame,"Thanks for Riding!\nHave a Nice Day!");
+	            	    //JOptionPane.showMessageDialog(frame,"Thanks for Riding!\nHave a Nice Day!");
+	            	    //frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 	            	    frame.dispose();
 					}
 				});

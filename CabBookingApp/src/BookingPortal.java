@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -11,6 +12,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.awt.Image;
 
 public class BookingPortal {
 	public JFrame frame;
@@ -58,6 +60,9 @@ public class BookingPortal {
 		frame.setBounds(100, 100, 887, 525);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		ImageIcon logo = new ImageIcon("C:\\Users\\Mihir Bansal\\Desktop\\project images\\logo6.jpg");
+		frame.setIconImage(logo.getImage());
+		frame.setTitle("MARS Cabs");
 		
 		String s[]= SqlConnector.DBConnectgetcity();
 		
@@ -74,25 +79,25 @@ public class BookingPortal {
 		JButton btnConfirmBooking = new JButton("Confirm Booking");
 		
 		btnConfirmBooking.setVisible(false);
-		btnConfirmBooking.setBounds(282, 440, 135, 25);
+		btnConfirmBooking.setBounds(80, 440, 135, 25);
 		frame.getContentPane().add(btnConfirmBooking);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblNewLabel.setVisible(false);
-		lblNewLabel.setBounds(233, 285, 148, 16);
+		lblNewLabel.setBounds(236, 339, 148, 16);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblNewLabel_1.setVisible(false);
-		lblNewLabel_1.setBounds(233, 314, 148, 16);
+		lblNewLabel_1.setBounds(236, 368, 148, 16);
 		frame.getContentPane().add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		lblNewLabel_2.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblNewLabel_2.setVisible(false);
-		lblNewLabel_2.setBounds(233, 343, 148, 16);
+		lblNewLabel_2.setBounds(236, 397, 148, 16);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JLabel lblPickup = new JLabel("Pickup :");
@@ -108,26 +113,26 @@ public class BookingPortal {
 		JLabel lblDistance = new JLabel("Distance:");
 		lblDistance.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblDistance.setVisible(false);
-		lblDistance.setBounds(164, 285, 78, 16);
+		lblDistance.setBounds(167, 339, 78, 16);
 		frame.getContentPane().add(lblDistance);
 		
 		JLabel lblEstimatedTime = new JLabel("Estimated Time:");
 		lblEstimatedTime.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblEstimatedTime.setVisible(false);
-		lblEstimatedTime.setBounds(120, 314, 122, 16);
+		lblEstimatedTime.setBounds(123, 368, 122, 16);
 		frame.getContentPane().add(lblEstimatedTime);
 		
 		JLabel lblEstimatedFare = new JLabel("Estimated Fare:");
 		lblEstimatedFare.setFont(new Font("Dialog", Font.PLAIN, 15));
 		lblEstimatedFare.setVisible(false);
-		lblEstimatedFare.setBounds(120, 343, 122, 16);
+		lblEstimatedFare.setBounds(123, 397, 122, 16);
 		frame.getContentPane().add(lblEstimatedFare);
 		
 		
 		
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.setVisible(false);
-		btnCancel.setBounds(459, 440, 97, 25);
+		btnCancel.setBounds(257, 440, 97, 25);
 		frame.getContentPane().add(btnCancel);
 		
 		btnSearchForCabs.setBounds(68, 226, 148, 25);
@@ -156,6 +161,29 @@ public class BookingPortal {
 		lblBookARide.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblBookARide.setBounds(27, 30, 142, 34);
 		frame.getContentPane().add(lblBookARide);
+		
+		JLabel label = new JLabel("");
+		label.setBounds(155, 287, 37, 39);
+		frame.getContentPane().add(label);
+		Image tripimg = new ImageIcon(this.getClass().getResource("/trip.png")).getImage();
+		label.setIcon(new ImageIcon(tripimg));
+		
+		JLabel label_1 = new JLabel("Trip Details");
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		label_1.setBounds(27, 297, 159, 27);
+		frame.getContentPane().add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setBounds(180, 32, 32, 32);
+		frame.getContentPane().add(label_2);
+		Image ride = new ImageIcon(this.getClass().getResource("/ride.png")).getImage();
+		label_2.setIcon(new ImageIcon(ride));
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setBounds(458, 13, 384, 452);
+		frame.getContentPane().add(label_3);
+		Image map = new ImageIcon(this.getClass().getResource("/mapfinal2.jpg")).getImage();
+		label_3.setIcon(new ImageIcon(map));
 		
 		btnSearchForCabs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -73,11 +73,11 @@ public class DriverAllotment {
 					Connection con=DriverManager.getConnection(  
 					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
 					Statement stmt=con.createStatement(); 
-					String que = "select max(drivercount),name from city;";
+					String que = "select name from city where drivercount = (select max(drivercount) from city) ;";
 					rs = stmt.executeQuery(que); 
-					while(rs.next())
-						city = rs.getString("name");
-					con.close();
+					rs.next();  
+					city = rs.getString("name");
+				con.close();
 				}
 				catch(Exception e) {
 						System.out.println(e);

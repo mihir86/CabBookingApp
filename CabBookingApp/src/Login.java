@@ -54,19 +54,21 @@ public class Login {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 774, 533);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		ImageIcon logo = new ImageIcon("C:\\Users\\Mihir Bansal\\Desktop\\project images\\logo6.jpg");
 		frame.setIconImage(logo.getImage());
 		frame.setTitle("MARS Cabs");
 		
 		JLabel lblUsername = new JLabel("Password");
-		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUsername.setForeground(Color.BLACK);
+		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblUsername.setBounds(220, 255, 99, 37);
 		frame.getContentPane().add(lblUsername);
 		
 		JLabel lblUserid = new JLabel("UserID");
-		lblUserid.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblUserid.setForeground(Color.BLACK);
+		lblUserid.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblUserid.setBounds(241, 205, 60, 37);
 		frame.getContentPane().add(lblUserid);
 		
@@ -80,6 +82,7 @@ public class Login {
 		uid.setColumns(10);
 		
 		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 13));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String userid = uid.getText();
@@ -104,16 +107,16 @@ public class Login {
 				}
 			}
 		});
-		btnLogin.setBounds(308, 346, 97, 25);
+		btnLogin.setBounds(306, 334, 97, 25);
 		frame.getContentPane().add(btnLogin);
 		
 		
 		hyperlink = new JLabel("New User? Register here");
 		hyperlink.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		hyperlink.setBounds(268, 396, 195, 32);
+		hyperlink.setBounds(268, 430, 195, 32);
 		frame.getContentPane().add(hyperlink);
 		
-		hyperlink.setForeground(Color.BLUE.darker());
+		hyperlink.setForeground(Color.BLUE);
 	    hyperlink.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		
 	  
@@ -137,13 +140,14 @@ public class Login {
 	    });
 		
 		JLabel lblWelcomeToUber = DefaultComponentFactory.getInstance().createTitle("Welcome to MARS Cabs");
+		lblWelcomeToUber.setForeground(Color.BLACK);
 		lblWelcomeToUber.setFont(new Font("Tahoma", Font.BOLD, 36));
-		lblWelcomeToUber.setBounds(206, 40, 439, 59);
+		lblWelcomeToUber.setBounds(165, 46, 439, 59);
 		frame.getContentPane().add(lblWelcomeToUber);
 		
 		JLabel label_1 = new JLabel("Sign In");
-		label_1.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		label_1.setBounds(321, 132, 68, 25);
+		label_1.setFont(new Font("Tahoma", Font.PLAIN, 24));
+		label_1.setBounds(321, 132, 74, 37);
 		frame.getContentPane().add(label_1);
 		
 		JLabel label = new JLabel("");
@@ -159,9 +163,15 @@ public class Login {
 		label_2.setIcon(new ImageIcon(img2));
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setBounds(26, 24, 127, 116);
+		label_3.setBounds(12, 13, 127, 116);
 		frame.getContentPane().add(label_3);
 		Image img3 = new ImageIcon(this.getClass().getResource("/logo6.jpg")).getImage();
 		label_3.setIcon(new ImageIcon(img3));
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setBounds(0, 0, 756, 486);
+		frame.getContentPane().add(label_4);
+		Image bg = new ImageIcon(this.getClass().getResource("/bground2.jpg")).getImage();
+		label_4.setIcon(new ImageIcon(bg));
 	}
 }

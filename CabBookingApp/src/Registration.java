@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -13,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.Font;
+import java.awt.Image;
 
 public class Registration extends JDialog {
 	private final JPanel contentPanel = new JPanel();
@@ -111,6 +113,12 @@ public class Registration extends JDialog {
 			lblRegistration.setFont(new Font("Tahoma", Font.PLAIN, 25));
 			lblRegistration.setBounds(44, 31, 137, 31);
 			contentPanel.add(lblRegistration);
+			
+			JLabel label = new JLabel("");
+			label.setBounds(193, 30, 32, 32);
+			contentPanel.add(label);
+			Image reg = new ImageIcon(this.getClass().getResource("/reg.png")).getImage();
+			label.setIcon(new ImageIcon(reg));
 		
 		
 			JPanel buttonPane = new JPanel();
@@ -131,14 +139,16 @@ public class Registration extends JDialog {
 							password = String.valueOf(passwordField.getPassword());
 							uid = userid.getText();
 							email = emailid.getText();
-							phone = Long.parseLong(phoneno.getText());
 							String regex = "[7-9]{1}[0-9]{9}";
 							if(!phoneno.getText().matches(regex))
 								JOptionPane.showMessageDialog(contentPanel, "Please enter a valid phone no.!");
-							else if(!User.uniqueid(uid))
+							else if(!User.uniqueid(uid)) {
+								phone = Long.parseLong(phoneno.getText());
 								JOptionPane.showMessageDialog(contentPanel, "Userid is already in use!");
-							else
+							}
+								else
 							{
+								phone = Long.parseLong(phoneno.getText());
 								u.userid = uid;
 								u.password = password;
 								u.wallet = 0;

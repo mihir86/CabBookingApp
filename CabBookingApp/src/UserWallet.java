@@ -51,6 +51,9 @@ public class UserWallet {
 		frame.setBounds(100, 100, 515, 336);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		ImageIcon logo = new ImageIcon("C:\\Users\\Mihir Bansal\\Desktop\\project images\\logo6.jpg");
+		frame.setIconImage(logo.getImage());
+		frame.setTitle("MARS Cabs");
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setText(Integer.toString(u1.wallet));
@@ -91,7 +94,7 @@ public class UserWallet {
 		btnAddMoney.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 				int addmoney = Integer.parseInt((String)money.getSelectedItem());
-				if (JOptionPane.showConfirmDialog(null, "Are you sure?", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+				if (JOptionPane.showConfirmDialog(frame, "Are you sure?", "", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 				    // yes option
 					u1.addMoney(addmoney);
 					lblNewLabel.setText(Integer.toString(u1.wallet));
