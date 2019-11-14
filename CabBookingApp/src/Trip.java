@@ -179,8 +179,24 @@ public class Trip {
 		frame.getContentPane().add(label_1);
 		Image img2 = new ImageIcon(this.getClass().getResource("/driver.png")).getImage();
 		label_1.setIcon(new ImageIcon(img2));
-				
-		Timer t = new Timer(time,new ActionListener() {
+		
+		/*Timer t1[] = new Timer[100];
+		
+		for(int i=0;i<100;i++) {
+			t1[i] = new Timer((time/100),new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					// TODO Auto-generated method stub
+					//frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+					progressBar.setValue(progressBar.getValue()+1);
+				}
+			});
+		}
+		for(int i=0;i<100;i++) {
+			t1[i].start();
+		}*/
+		
+			Timer t = new Timer(time,new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub

@@ -16,12 +16,15 @@ import java.awt.Font;
 
 public class Registration extends JDialog {
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField name;
+	private JTextField userid;
+	private JTextField emailid;
+	private JTextField phoneno;
 	private JPasswordField passwordField;
-
+	String uname,uid,email,password;
+	long phone;
+	User u = new User();
+	int flag = 1;
 	/**
 	 * Launch the application.
 	 */
@@ -45,16 +48,16 @@ public class Registration extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-			JLabel lblUsername = new JLabel("UserName");
+			JLabel lblUsername = new JLabel("Name");
 			lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
-			lblUsername.setBounds(63, 102, 88, 20);
+			lblUsername.setBounds(87, 100, 49, 20);
 			contentPanel.add(lblUsername);
 		
 		
-			textField = new JTextField();
-			textField.setBounds(163, 100, 225, 22);
-			contentPanel.add(textField);
-			textField.setColumns(10);
+			name = new JTextField();
+			name.setBounds(163, 100, 225, 22);
+			contentPanel.add(name);
+			name.setColumns(10);
 		
 		
 			JLabel lblUserid = new JLabel("UserID");
@@ -63,10 +66,10 @@ public class Registration extends JDialog {
 			contentPanel.add(lblUserid);
 		
 		
-			textField_1 = new JTextField();
-			textField_1.setColumns(10);
-			textField_1.setBounds(163, 150, 225, 22);
-			contentPanel.add(textField_1);
+			userid = new JTextField();
+			userid.setColumns(10);
+			userid.setBounds(163, 150, 225, 22);
+			contentPanel.add(userid);
 		
 		
 			JLabel lblPassword = new JLabel("Password");
@@ -81,10 +84,10 @@ public class Registration extends JDialog {
 			contentPanel.add(lblEmailid);
 		
 		
-			textField_3 = new JTextField();
-			textField_3.setColumns(10);
-			textField_3.setBounds(163, 251, 225, 22);
-			contentPanel.add(textField_3);
+			emailid = new JTextField();
+			emailid.setColumns(10);
+			emailid.setBounds(163, 251, 225, 22);
+			contentPanel.add(emailid);
 		
 		
 			JLabel lblPhone = new JLabel("Phone");
@@ -93,10 +96,10 @@ public class Registration extends JDialog {
 			contentPanel.add(lblPhone);
 		
 		
-			textField_4 = new JTextField();
-			textField_4.setColumns(10);
-			textField_4.setBounds(163, 300, 225, 22);
-			contentPanel.add(textField_4);
+			phoneno = new JTextField();
+			phoneno.setColumns(10);
+			phoneno.setBounds(163, 300, 225, 22);
+			contentPanel.add(phoneno);
 		
 		
 			passwordField = new JPasswordField();
@@ -117,13 +120,37 @@ public class Registration extends JDialog {
 				JButton RegisterButton = new JButton("Register");
 				RegisterButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
-						if(textField.getText().trim().isEmpty() || textField_1.getText().trim().isEmpty() || passwordField.getText().trim().isEmpty() || textField_3.getText().trim().isEmpty() || textField_4.getText().trim().isEmpty() || textField.getText().trim().isEmpty())
+						if(name.getText().trim().isEmpty() || userid.getText().trim().isEmpty() || String.valueOf(passwordField.getPassword()).trim().isEmpty() || emailid.getText().trim().isEmpty() || phoneno.getText().trim().isEmpty()) {
 							JOptionPane.showMessageDialog(contentPanel, "Please fill all the fields");
-						else
-						{
-							JOptionPane.showMessageDialog(contentPanel, "Registration Succesful");
-							dispose();
+							flag=0;
 						}
+						else
+							flag=1;
+						if(flag==1) {
+							uname = name.getText();
+							password = String.valueOf(passwordField.getPassword());
+							uid = userid.getText();
+							email = emailid.getText();
+							phone = Long.parseLong(phoneno.getText());
+							String regex = "[7-9]{1}[0-9]{9}";
+							if(!phoneno.getText().matches(regex))
+								JOptionPane.showMessageDialog(contentPanel, "Please enter a valid phone no.!");
+							else if(!User.uniqueid(uid))
+								JOptionPane.showMessageDialog(contentPanel, "Userid is already in use!");
+							else
+							{
+								u.userid = uid;
+								u.password = password;
+								u.wallet = 0;
+								u.name = uname;
+								u.emailid = email;
+								u.phone = phone;
+								u.register();
+								JOptionPane.showMessageDialog(contentPanel, "Registration Succesful");
+								dispose();
+							}
+						}
+						
 					}
 				});
 				RegisterButton.setActionCommand("OK");

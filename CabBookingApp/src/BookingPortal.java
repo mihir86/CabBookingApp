@@ -170,9 +170,6 @@ public class BookingPortal {
 				if(to.equals(from)) {
             	    JOptionPane.showMessageDialog(frame,"Please Enter 2 different locations!");
 				}
-				else if(!u1.checkWallet(distance)) {
-            	    JOptionPane.showMessageDialog(frame,"Insufficient Wallet Balance!");
-				}
 				else if(!DriverAllotment.checkDriverCount(from)) {
             	    JOptionPane.showMessageDialog(frame,"No cabs available at the moment!");
             	    String location = DriverAllotment.maxDriverCity();
@@ -219,6 +216,7 @@ public class BookingPortal {
 		
 		btnConfirmBooking.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				u1 = User.getUser(u1.userid, u1.password);
 				time = (int) User.timeCal(distance);
 				
 				if(SqlConnector.IsRiding(u1.userid)) {
@@ -233,12 +231,6 @@ public class BookingPortal {
 					SqlConnector.updateRidingY(u1.userid);
 					btnConfirmBooking.setVisible(false);
 					btnCancel.setVisible(false);
-					lblNewLabel.setVisible(false);
-					lblDistance.setVisible(false);
-					lblNewLabel_1.setVisible(false);
-					lblEstimatedTime.setVisible(false);
-					lblNewLabel_2.setVisible(false);
-					lblEstimatedFare.setVisible(false);
 					btnSearchForCabs.setVisible(false);
 					btnMyWallet.setVisible(false);
 					
@@ -260,6 +252,13 @@ public class BookingPortal {
 							// TODO Auto-generated method stub
 							btnSearchForCabs.setVisible(true);
 							btnMyWallet.setVisible(true);
+							lblNewLabel.setVisible(false);
+							lblDistance.setVisible(false);
+							lblNewLabel_1.setVisible(false);
+							lblEstimatedTime.setVisible(false);
+							lblNewLabel_2.setVisible(false);
+							lblEstimatedFare.setVisible(false);
+							
 						}
 						
 					});

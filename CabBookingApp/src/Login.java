@@ -56,6 +56,9 @@ public class Login {
 		frame.setBounds(100, 100, 774, 533);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		ImageIcon logo = new ImageIcon("C:\\Users\\Mihir Bansal\\Desktop\\project images\\logo6.jpg");
+		frame.setIconImage(logo.getImage());
+		frame.setTitle("MARS Cabs");
 		
 		JLabel lblUsername = new JLabel("Password");
 		lblUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -135,7 +138,7 @@ public class Login {
 		
 		JLabel lblWelcomeToUber = DefaultComponentFactory.getInstance().createTitle("Welcome to MARS Cabs");
 		lblWelcomeToUber.setFont(new Font("Tahoma", Font.BOLD, 36));
-		lblWelcomeToUber.setBounds(165, 40, 439, 59);
+		lblWelcomeToUber.setBounds(206, 40, 439, 59);
 		frame.getContentPane().add(lblWelcomeToUber);
 		
 		JLabel label_1 = new JLabel("Sign In");
@@ -154,5 +157,11 @@ public class Login {
 		frame.getContentPane().add(label_2);
 		Image img2 = new ImageIcon(this.getClass().getResource("/password2.png")).getImage();
 		label_2.setIcon(new ImageIcon(img2));
+		
+		JLabel label_3 = new JLabel("");
+		label_3.setBounds(26, 24, 127, 116);
+		frame.getContentPane().add(label_3);
+		Image img3 = new ImageIcon(this.getClass().getResource("/logo6.jpg")).getImage();
+		label_3.setIcon(new ImageIcon(img3));
 	}
 }

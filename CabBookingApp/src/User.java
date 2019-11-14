@@ -1,7 +1,7 @@
 public class User {
 	protected String userid,password;
-	private String emailid,name;
-	private long phone;
+	protected String emailid,name;
+	protected long phone;
 	protected int wallet;
 	
 	public User() {}
@@ -68,7 +68,7 @@ public class User {
 	}
 	
 	public Boolean checkWallet(double distance) {
-		double costOfTrip = distance * 40;
+		double costOfTrip = distance * 20;
 		if(wallet>=300 && (wallet-costOfTrip)>=0)
 			return true;
 		return false;
