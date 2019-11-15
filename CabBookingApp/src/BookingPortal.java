@@ -262,6 +262,7 @@ public class BookingPortal {
 					btnSearchForCabs.setVisible(false);
 					btnMyWallet.setVisible(false);
 					
+					
 					new Trip(d.vehicleNo,to,time,u1.userid,u1.password,distance);
 					
 					EventQueue.invokeLater(new Runnable() {

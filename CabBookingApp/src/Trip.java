@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
+import java.awt.Color;
 
 public class Trip {
 
@@ -119,13 +120,13 @@ public class Trip {
 		}
 		
 		JComboBox comboBox = new JComboBox(ratingOptions);
-		comboBox.setBounds(266, 269, 106, 22);
+		comboBox.setBounds(266, 309, 106, 22);
 		frame.getContentPane().add(comboBox);
 		comboBox.setVisible(false);
 		
 		JLabel lblSelectRating = new JLabel("Please Select Driver Rating :");
 		lblSelectRating.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblSelectRating.setBounds(49, 266, 199, 26);
+		lblSelectRating.setBounds(49, 306, 199, 26);
 		frame.getContentPane().add(lblSelectRating);
 		lblSelectRating.setVisible(false);
 		
@@ -134,21 +135,13 @@ public class Trip {
 		lblTripDetails.setBounds(32, 39, 159, 27);
 		frame.getContentPane().add(lblTripDetails);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(100, 313, 397, 26);
-		frame.getContentPane().add(progressBar);
-		
 		JButton btnOk = new JButton("OK");
-		/*btnOk.addActionListener(new ActionListener() {
+		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(progressBar.getValue() < 100)
-					progressBar.setValue(progressBar.getValue()+5);
-				else
-					t.stop();
 			}
-		});*/
+		});
 		btnOk.setVisible(false);
-		btnOk.setBounds(417, 268, 80, 25);
+		btnOk.setBounds(415, 308, 80, 25);
 		frame.getContentPane().add(btnOk);
 		Image img1 = new ImageIcon(this.getClass().getResource("/trip.png")).getImage();
 		
@@ -158,30 +151,24 @@ public class Trip {
 		Image img2 = new ImageIcon(this.getClass().getResource("/driver.png")).getImage();
 		label_1.setIcon(new ImageIcon(img2));
 		
-		/*Timer t1[] = new Timer[100];
-		
-		for(int i=0;i<100;i++) {
-			t1[i] = new Timer((time/100),new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
-					//frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-					progressBar.setValue(progressBar.getValue()+1);
-				}
-			});
-		}
-		for(int i=0;i<100;i++) {
-			t1[i].start();
-		}*/
+		JLabel lblThanksForRiding = new JLabel("Thanks For Riding with us!!!");
+		lblThanksForRiding.setForeground(Color.RED);
+		lblThanksForRiding.setFont(new Font("Times New Roman", Font.BOLD, 22));
+		lblThanksForRiding.setBounds(151, 249, 329, 32);
+		frame.getContentPane().add(lblThanksForRiding);
+		lblThanksForRiding.setVisible(false);
 		
 			Timer t = new Timer(time,new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				//frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				lblThanksForRiding.setVisible(true);
 				lblSelectRating.setVisible(true);
 				comboBox.setVisible(true);
 				btnOk.setVisible(true);
+				User u = User.getUser(uid, passwd);
+				u.updateWallet(distance);
 				btnOk.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						d1 = Driver.getDriver(vehicleid);
@@ -190,16 +177,14 @@ public class Trip {
 	            		SqlConnector.DBConnectupdateDriver("update driver set tripcount="+Integer.toString(d1.tripsCount+1)+",rating=" + Double.toString((recentRating + d1.rating*(d1.tripsCount))/(d1.tripsCount+1))+",availablity='Yes',presentloc='"+newcity+"' where vehicleno='"+d1.vehicleNo+"';" );
 	            	    SqlConnector.updateAvailabilityY(d1.vehicleNo);
 	            	    SqlConnector.updateRidingN(uid);
-	            	    User u = User.getUser(uid, passwd);
-	            	    u.updateWallet(distance);
-	            	    //JOptionPane.showMessageDialog(frame,"Thanks for Riding!\nHave a Nice Day!");
-	            	    //frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE);
 	            	    frame.dispose();
 					}
 				});
 			}
 			
 		});
+		t.setRepeats(false);
 		t.start();
+		
 	}
 }

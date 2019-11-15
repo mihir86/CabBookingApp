@@ -140,8 +140,12 @@ public class Registration extends JDialog {
 							uid = userid.getText();
 							email = emailid.getText();
 							String regex = "[7-9]{1}[0-9]{9}";
-							if(!phoneno.getText().matches(regex))
-								JOptionPane.showMessageDialog(contentPanel, "Please enter a valid phone no.!");
+							String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+		                            "[a-zA-Z0-9_+&*-]+)*@" + 
+		                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+		                            "A-Z]{2,7}$"; 
+							if(!phoneno.getText().matches(regex) || !email.matches(emailRegex))
+								JOptionPane.showMessageDialog(contentPanel, "Please enter valid credentials!");
 							else if(!User.uniqueid(uid)) {
 								phone = Long.parseLong(phoneno.getText());
 								JOptionPane.showMessageDialog(contentPanel, "Userid is already in use!");
@@ -156,7 +160,7 @@ public class Registration extends JDialog {
 								u.emailid = email;
 								u.phone = phone;
 								u.register();
-								JOptionPane.showMessageDialog(contentPanel, "Registration Succesful");
+								JOptionPane.showMessageDialog(contentPanel, "Registration Successful");
 								dispose();
 							}
 						}
