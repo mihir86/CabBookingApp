@@ -8,7 +8,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");  
 			Statement stmt=con.createStatement();  
 			stmt.executeUpdate(query);   
 			con.close();  
@@ -25,7 +25,7 @@ public class SqlConnector {
 		try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 				Statement stmt=con.createStatement(); 
 				String que = "select userid from User;";
 				rs = stmt.executeQuery(que); 
@@ -46,7 +46,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");  
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");  
 			Statement stmt=con.createStatement(); 
 			String que = "select password from User;";
 			rs = stmt.executeQuery(que); 
@@ -66,7 +66,7 @@ public class SqlConnector {
 		try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 				Statement stmt=con.createStatement(); 
 				String que = "select name from User where userid = '"+ id + "';";
 				rs = stmt.executeQuery(que);
@@ -86,7 +86,7 @@ public class SqlConnector {
 		try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 				Statement stmt=con.createStatement(); 
 				String que = "select email from User where userid = '"+ id + "';";
 				rs = stmt.executeQuery(que);
@@ -106,7 +106,7 @@ public class SqlConnector {
 		try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 				Statement stmt=con.createStatement(); 
 				String que = "select phone from User where userid = '"+ id + "';";
 				rs = stmt.executeQuery(que);
@@ -126,7 +126,7 @@ public class SqlConnector {
 		try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 				Statement stmt=con.createStatement(); 
 				String que = "select wallet from User where userid = '"+ id + "';";
 				rs = stmt.executeQuery(que);
@@ -145,7 +145,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 			Statement stmt=con.createStatement();  
 			stmt.executeUpdate(query);   
 			con.close();  
@@ -160,7 +160,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 			Statement stmt=con.createStatement();  
 			stmt.executeUpdate(query);   
 			con.close();  
@@ -175,7 +175,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 			Statement stmt=con.createStatement();  
 			stmt.executeUpdate(query);
 			con.close();
@@ -190,7 +190,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 			Statement stmt=con.createStatement();  
 			stmt.executeUpdate(query);
 			con.close();
@@ -205,7 +205,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 			Statement stmt=con.createStatement(); 
 			String que = "select riding from User where userid = '"+ id + "';";
 			rs = stmt.executeQuery(que);
@@ -226,7 +226,7 @@ public class SqlConnector {
 		try{  
 			Class.forName("com.mysql.jdbc.Driver");  
 			Connection con=DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+			"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 			Statement stmt=con.createStatement();  
 			stmt.executeUpdate(query);   
 			con.close();  
@@ -241,7 +241,7 @@ public class SqlConnector {
 			try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 				Statement stmt=con.createStatement();  
 				stmt.executeUpdate(query);   
 				con.close();  
@@ -256,7 +256,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select name from Driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
@@ -276,7 +276,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select presentloc from driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
@@ -296,7 +296,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select availablity from driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
@@ -316,7 +316,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select phone from driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
@@ -336,7 +336,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select rating from driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
@@ -356,7 +356,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select tripcount from driver where vehicleno = '"+ id + "';";
 					rs = stmt.executeQuery(que);
@@ -376,7 +376,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select X from city where name = '"+ city + "';";
 					rs = stmt.executeQuery(que);
@@ -396,7 +396,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select Y from city where name = '"+ city + "';";
 					rs = stmt.executeQuery(que);
@@ -417,7 +417,7 @@ public class SqlConnector {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select name from city;";
 					rs = stmt.executeQuery(que); 
@@ -429,6 +429,5 @@ public class SqlConnector {
 						System.out.println(e);
 				}  
 			return arr;
-		} 
-	
+		}
 }

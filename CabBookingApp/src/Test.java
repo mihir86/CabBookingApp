@@ -13,7 +13,7 @@ public class Test {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select vehicleno from driver where rating = ( select max(rating) from driver where presentloc='"+ cityname +"' and availablity='Yes') and presentloc='"+ cityname +"' and availablity='Yes';";
 					rs = stmt.executeQuery(que); 

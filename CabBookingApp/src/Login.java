@@ -56,7 +56,7 @@ public class Login {
 		frame.setBounds(100, 100, 774, 533);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		ImageIcon logo = new ImageIcon("C:\\Users\\Mihir Bansal\\eclipse-workspace\\CabBookingApp\\project images\\logo6.jpg");
+		ImageIcon logo = new ImageIcon(this.getClass().getResource("/logo6.jpg"));
 		frame.setIconImage(logo.getImage());
 		frame.setTitle("MARS Cabs");
 		

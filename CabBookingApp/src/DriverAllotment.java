@@ -11,7 +11,7 @@ public class DriverAllotment {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select vehicleno from driver where rating = ( select max(rating) from driver where presentloc='"+ cityname +"' and availablity='Yes') and presentloc='"+ cityname +"' and availablity='Yes';";
 					rs = stmt.executeQuery(que); 
@@ -31,7 +31,7 @@ public class DriverAllotment {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select drivercount from city where name='"+from+"';";
 					rs = stmt.executeQuery(que); 
@@ -52,7 +52,7 @@ public class DriverAllotment {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select min(rating),vehicleno from driver where presentloc='"+ from+"' and availablity='Yes';";
 					rs = stmt.executeQuery(que); 
@@ -71,7 +71,7 @@ public class DriverAllotment {
 			try{  
 					Class.forName("com.mysql.jdbc.Driver");  
 					Connection con=DriverManager.getConnection(  
-					"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");   
+					"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");   
 					Statement stmt=con.createStatement(); 
 					String que = "select name from city where drivercount = (select max(drivercount) from city) ;";
 					rs = stmt.executeQuery(que); 
@@ -90,7 +90,7 @@ public class DriverAllotment {
 			try{  
 				Class.forName("com.mysql.jdbc.Driver");  
 				Connection con=DriverManager.getConnection(  
-				"jdbc:mysql://localhost:3306/cabbookingsql","root","swapnil69");    
+				"jdbc:mysql://localhost:3306/cabbookingsql","root","mihir123");    
 				Statement stmt=con.createStatement();  
 				stmt.executeUpdate(query);
 				con.close();
