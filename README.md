@@ -1,4 +1,4 @@
-### Cab Booking Application
+# Cab Booking Application
 ## Introduction
 This Online Cab Booking project deals with an online application designed for booking cabs as per the requirements of the customers at their convenience.
 
